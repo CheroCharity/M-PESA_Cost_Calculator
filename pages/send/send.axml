@@ -1,0 +1,49 @@
+<view class="page">
+  <text class="title">SEND/WITHDRAW</text>
+
+  <view class="form-group">
+    <text class="label">Enter Amount</text>
+    <input type="digit" value="{{amount}}" maxlength="6" onInput="onAmountInput" class="input" placeholder="e.g. 5000" />
+    <text class="error-text" a:if="{{showError}}">Maximum allowed is 150000</text>
+  </view>
+
+  <view class="fee-display">
+    <view class="fee-category">
+    <text class="fee-label">Send to Registered Number:</text>
+    <text class="fee-value">Ksh {{fees.send_registered}}</text>
+    </view>
+    <view class="fee-category">
+    <text class="fee-label">Minimum Balance - Send to Registered:</text>
+    <text class="fee-value">Ksh {{amount+fees.send_registered}}</text>
+    </view>
+    <view class="fee-category">
+    <text class="fee-label">Send to Unregistered Number:</text>
+    <text class="fee-value">Ksh {{fees.send_unregistered}}</text>
+    </view>
+    <view class="fee-category">
+    <text class="fee-label">Minimum Balance - Send to Unregistered:</text>
+    <text class="fee-value">Ksh {{amount+fees.send_unregistered}}</text>
+    </view>
+    <view class="fee-category">
+    <text class="fee-label">Withdraw at Agent:</text>
+    <text class="fee-value">Ksh {{fees.withdraw_agent}}</text>
+    </view>
+    <view class="fee-category">
+    <text class="fee-label">Maximum Withdrawable at Agent:</text>
+    <text class="fee-value">Ksh {{amount-fees.withdraw_agent}}</text>
+    </view>
+    <view class="fee-category">
+    <text class="fee-label">Amount + Withdrawal Charge:</text>
+    <text class="fee-value">Ksh {{amount+fees.withdraw_agent}}</text>
+    </view>
+    <view class="fee-category">
+    <text class="fee-label">Amount + Withdrawal & Sending Charge:</text>
+    <text class="fee-value">Ksh {{amount+fees.withdraw_agent+fees.send_registered}}</text>
+    </view>
+    <view class="fee-category">
+    <text class="fee-label">Withdraw from ATM:</text>
+    <text class="fee-value">Ksh {{fees.withdraw_atm}}</text>
+    </view>
+  </view>
+
+</view>

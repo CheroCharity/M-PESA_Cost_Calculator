@@ -1,0 +1,47 @@
+<view class="page">
+  <text class="title">Lipa na M-PESA</text>
+
+  <!-- Tabs -->
+  <view class="tabs">
+    <view class="tab {{activeTab === 'paybill' ? 'active' : ''}}" data-tab="paybill" onTap="switchTab">Paybill</view>
+    <view class="tab {{activeTab === 'till' ? 'active' : ''}}" data-tab="till" onTap="switchTab">Till</view>
+  </view>
+
+  <!-- Paybill Form -->
+  <view wx:if="{{activeTab === 'paybill'}}">
+    <view class="form-group">
+      <text class="label">Paybill Number</text>
+      <input type="number" class="input" value="{{form.paybill.merchant}}" placeholder="e.g. 123456" onInput="onMerchantInput" />
+    </view>
+    <view class="form-group">
+      <text class="label">Amount</text>
+      <input type="digit" class="input" value="{{form.paybill.amount}}" placeholder="e.g. 500" onInput="onAmountInput" />
+    </view>
+  </view>
+
+  <!-- Till Form -->
+  <view wx:if="{{activeTab === 'till'}}">
+    <view class="form-group">
+      <text class="label">Till Number</text>
+      <input type="number" class="input" value="{{form.till.merchant}}" placeholder="e.g. 654321" onInput="onMerchantInput" />
+    </view>
+    <view class="form-group">
+      <text class="label">Amount</text>
+      <input type="digit" class="input" value="{{form.till.amount}}" placeholder="e.g. 500" onInput="onAmountInput" />
+    </view>
+  </view>
+
+  <view class="button" onTap="onSubmit">Submit</view>
+
+  <!-- Mock Transaction List -->
+  <view wx:if="{{transactions.length > 0}}" class="history">
+    <text class="title">Recent Mock Transactions</text>
+    <block a:for="{{transactions}}" a:key="index">
+      <view class="transaction">
+        <text>{{item.type}} {{item.merchant}}</text>
+        <text>Ksh {{item.amount}}</text>
+        <text class="time">{{item.time}}</text>
+      </view>
+    </block>
+  </view>
+</view>

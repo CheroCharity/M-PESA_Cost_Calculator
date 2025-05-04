@@ -1,0 +1,12 @@
+{
+  
+  "pages": [
+      "pages/index/index",
+      "pages/send/send",
+      "pages/lipa/lipa"
+    ],
+  
+  "window": {
+    "defaultTitle": "M-PESA Fee Calculator"
+  }
+}

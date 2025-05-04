@@ -1,0 +1,89 @@
+/* pages/index/index.acss */
+.container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #666;
+}
+
+.calculator-card {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.icon-container {
+  position: absolute;
+  top: -20px;
+  left: 10px;
+  background-color: #007bff;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.card-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: medium;
+  color: #333;
+}
+
+.card-description {
+  font-size: 14px;
+  color: #777;
+}
+
+.buttons {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.primary-button {
+  background-color: #43b02a;
+  color: white;
+  /* padding: 10px; */
+  border-radius: 5px;
+  text-align: center;
+}
+
+.secondary-button {
+  border: 1px solid #43b02a;
+  color: #43b02a;
+  /* padding: 10px; */
+  border-radius: 5px;
+  text-align: center;
+}

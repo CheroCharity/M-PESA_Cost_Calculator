@@ -1,0 +1,28 @@
+<!-- pages/index/index.axml -->
+<view class="container">
+  <view class="header">
+    <text class="title">M-PESA Transaction Costs</text>
+  </view>
+  <view>
+    <text class="subtitle">Calculate fees for M-PESA transfers, payments, and withdrawals instantly on your phone.</text>
+  </view>
+
+  <view class="calculator-card">
+    <view class="icon-container">
+      <image class="icon" src="smartphone-icon.png" />
+    </view>
+    <view class="card-content">
+      <view>
+      <text class="card-title">Mobile M-PESA Calculator</text>
+      </view>
+      <view>
+      <text class="card-description">Get instant fee calculations on the go</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="buttons">
+    <button class="primary-button" onTap="openCalculator">Open Calculator</button>
+    <button class="secondary-button">Learn More</button>
+  </view>
+</view>
