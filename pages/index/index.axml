@@ -9,7 +9,7 @@
 
   <view class="calculator-card">
     <view class="icon-container">
-      <image class="icon" src="smartphone-icon.png" />
+      <image class="icon" src="../../assets/M-PESA.png" />
     </view>
     <view class="card-content">
       <view>
@@ -23,6 +23,6 @@
 
   <view class="buttons">
     <button class="primary-button" onTap="openCalculator">Open Calculator</button>
-    <button class="secondary-button">Learn More</button>
+    <button class="secondary-button" onTap="learnMore">Learn More</button>
   </view>
 </view>

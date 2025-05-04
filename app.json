@@ -3,7 +3,8 @@
   "pages": [
       "pages/index/index",
       "pages/send/send",
-      "pages/lipa/lipa"
+      "pages/lipa/lipa",
+      "pages/webview/webview" 
     ],
   
   "window": {

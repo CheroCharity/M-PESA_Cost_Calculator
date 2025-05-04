@@ -24,8 +24,9 @@ Page({
 
   learnMore() {
     // Navigate to the learn more page
+    const url = encodeURIComponent('https://www.safaricom.co.ke/main-mpesa/m-pesa-for-you/tariffs-limits/consumer-tariffs-limits');
     my.navigateTo({
-      url: '/pages/learn-more/index',
+    url: `/pages/webview/webview?url=${url}`,
     });
   },
 });
