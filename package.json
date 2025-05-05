@@ -1,0 +1,24 @@
+{
+  "name": "MpesaCostCalculator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:alipay": "antm build --target alipay"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CheroCharity/M-PESA_Cost_Calculator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CheroCharity/M-PESA_Cost_Calculator/issues"
+  },
+  "homepage": "https://github.com/CheroCharity/M-PESA_Cost_Calculator#readme",
+  "dependencies": {
+    "antd-mini": "^3.1.12"
+  }
+}

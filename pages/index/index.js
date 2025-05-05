@@ -11,7 +11,7 @@ Page({
   checkIfMobile() {
     // Logic to determine if the device is mobile
     this.setData({
-      isMobile: true, // Example: Set to true for mobile devices
+      isMobile: true,
     });
   },
 
