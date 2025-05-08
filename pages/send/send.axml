@@ -1,49 +1,155 @@
 <view class="page">
-  <text class="title">SEND/WITHDRAW</text>
-
-  <view class="form-group">
-    <text class="label">Enter Amount</text>
-    <input type="digit" value="{{amount}}" maxlength="6" onInput="onAmountInput" class="input" placeholder="e.g. 5000" />
-    <text class="error-text" a:if="{{showError}}">Maximum allowed is 150000</text>
+  <view class="tabs">
+    <!-- Tab headers -->
+    <view class="tab-header">
+      <view class="tab" onTap="onTabChange" data-index="0"
+            class="{{current === 0 ? 'active' : ''}}">  <text class="{{current === 0 ? 'title-active' : 'active'}}">SEND/WITHDRAW</text></view>
+      <view class="tab" onTap="onTabChange" data-index="1"
+            class="{{current === 1 ? 'active' : ''}}"><text class="{{current === 1 ? 'title-active' : 'active'}}">LIPA NA M-PESA</text></view>
+    </view>
+   
+    <!-- Tab contents -->
+    <view class="tab-content">
+      <view a:if="{{current === 0}}">
+        <view class="form-group">
+          <text class="label">Enter Amount</text>
+          <input type="digit" value="{{amount}}" maxlength="6" onInput="onAmountInput" class="input" placeholder="e.g. 5000" />
+          <text class="error-text" a:if="{{showError}}">Maximum allowed is 150000</text>
+        </view>
+      
+        <view class="fee-display">
+          <view class="fee-category">
+          <text class="fee-label">Send to Registered Number:</text>
+          <text class="fee-value">Ksh {{fees.send_registered}}</text>
+          </view>
+          <view class="fee-category">
+          <text class="fee-label">Minimum Balance - Send to Registered:</text>
+          <text class="fee-value">Ksh {{amount+fees.send_registered}}</text>
+          </view>
+          <view class="fee-category">
+          <text class="fee-label">Send to Unregistered Number:</text>
+          <text class="fee-value">Ksh {{fees.send_unregistered}}</text>
+          </view>
+          <view class="fee-category">
+          <text class="fee-label">Minimum Balance - Send to Unregistered:</text>
+          <text class="fee-value">Ksh {{amount+fees.send_unregistered}}</text>
+          </view>
+          <view class="fee-category">
+          <text class="fee-label">Withdraw at Agent:</text>
+          <text class="fee-value">Ksh {{fees.withdraw_agent}}</text>
+          </view>
+          <view class="fee-category">
+          <text class="fee-label">Maximum Withdrawable at Agent:</text>
+          <text class="fee-value">Ksh {{amount-fees.withdraw_agent}}</text>
+          </view>
+          <view class="fee-category">
+          <text class="fee-label">Amount + Withdrawal Charge:</text>
+          <text class="fee-value">Ksh {{amount+fees.withdraw_agent}}</text>
+          </view>
+          <view class="fee-category">
+          <text class="fee-label">Amount + Withdrawal & Sending Charge:</text>
+          <text class="fee-value">Ksh {{amount+(fees.withdraw_agent)+fees.send_registered}}</text>
+          </view>
+          <view class="fee-category">
+          <text class="fee-label">Withdraw from ATM:</text>
+          <text class="fee-value">Ksh {{fees.withdraw_atm}}</text>
+          </view>
+        </view>
+      </view>
+      <view a:if="{{current === 1}}">
+        <view class="radio-group">
+          <radio-group onChange="onRadioChange" value="{{selected}}">
+            <label class="radio-option">
+              <radio value="paybill" /> Pay Bill
+            </label>
+            <label class="radio-option">
+              <radio value="till" /> Buy Goods
+            </label>
+          </radio-group>
+        </view>
+         
+        <!-- <view> -->
+          <view a:if="{{selected === 'paybill'}}">
+            <view class="form-group">
+              <text class="label">Enter Amount</text>
+              <input type="digit" value="{{amount}}" maxlength="6" onInput="onAmountInput" class="input" placeholder="e.g. 5000" />
+              <text class="error-text" a:if="{{showError}}">Maximum allowed is 250000</text>
+              <ant-button class="primary-button" onTap="checkPayBillCost">Check Transaction Cost</ant-button>
+            </view>
+            <view a:if="{{paybillFees.paybill_charge}}">
+              <view class="card">   
+              <view class="card-content">
+                <view class="amount-section">
+                  <view class="row">
+                    <text class="label">Amount:</text>
+                    <text class="value">KSh {{amount}}</text>
+                  </view>
+                  <view class="row">
+                    <text class="label">Transaction Fee:</text>
+                    <text class="value">KSh {{paybillFees.paybill_charge}}</text>
+                  </view>
+                  <view class="row total">
+                    <text class="label">Total Amount:</text>
+                    <text class="total-value">KSh {{amount+paybillFees.paybill_charge}}</text>
+                  </view>
+                  <view class="separator"></view>
+                  <view class="row total">
+                    <text class="label">Paybill Name::</text>
+                    <text class="total-value">Test Paybill</text>
+                  </view>
+                  <view class="row total">
+                    <text class="label">Paybill Number:</text>
+                    <text class="total-value">12343</text>
+                  </view>
+                </view>   
+              </view>
+          </view>
+        </view>
+      </view>
+          <view a:if="{{selected === 'till'}}">
+            <view class="form-group">
+              <text class="label">Enter Amount</text>
+              <input type="digit" value="{{amount}}" maxlength="6" onInput="onAmountInput" class="input" placeholder="e.g. 5000" />
+              <text class="error-text" a:if="{{showError}}">Maximum allowed is 250000</text>
+              <ant-button class="primary-button" onTap="checkTillCost">Check Transaction Cost</ant-button>
+            </view>
+            <view a:if="{{tillFees.till_charge}}">
+              <view class="card">   
+              <view class="card-content">
+                <view class="amount-section">
+                  <view class="row">
+                    <text class="label">Amount:</text>
+                    <text class="value">KSh {{amount}}</text>
+                  </view>
+                  <view class="row">
+                    <text class="label">Transaction Fee:</text>
+                    <text class="value">KSh {{tillFees.till_charge}}</text>
+                  </view>
+                  <view class="separator"></view>
+                  <view class="row total">
+                    <text class="label">Total Amount:</text>
+                    <text class="total-value">KSh {{amount+tillFees.till_charge}}</text>
+                  </view>
+                  <view class="row total">
+                    <text class="label">Till Name:</text>
+                    <text class="total-value">Test Till</text>
+                  </view>
+                  <view class="row total">
+                    <text class="label">Till Number:</text>
+                    <text class="total-value">12343</text>
+                  </view>
+                </view>            
+                </view>
+              </view>
+          </view>
+        </view>
+          
+        </view>
+      </view>
+    </view>
   </view>
 
-  <view class="fee-display">
-    <view class="fee-category">
-    <text class="fee-label">Send to Registered Number:</text>
-    <text class="fee-value">Ksh {{fees.send_registered}}</text>
-    </view>
-    <view class="fee-category">
-    <text class="fee-label">Minimum Balance - Send to Registered:</text>
-    <text class="fee-value">Ksh {{amount+fees.send_registered}}</text>
-    </view>
-    <view class="fee-category">
-    <text class="fee-label">Send to Unregistered Number:</text>
-    <text class="fee-value">Ksh {{fees.send_unregistered}}</text>
-    </view>
-    <view class="fee-category">
-    <text class="fee-label">Minimum Balance - Send to Unregistered:</text>
-    <text class="fee-value">Ksh {{amount+fees.send_unregistered}}</text>
-    </view>
-    <view class="fee-category">
-    <text class="fee-label">Withdraw at Agent:</text>
-    <text class="fee-value">Ksh {{fees.withdraw_agent}}</text>
-    </view>
-    <view class="fee-category">
-    <text class="fee-label">Maximum Withdrawable at Agent:</text>
-    <text class="fee-value">Ksh {{amount-fees.withdraw_agent}}</text>
-    </view>
-    <view class="fee-category">
-    <text class="fee-label">Amount + Withdrawal Charge:</text>
-    <text class="fee-value">Ksh {{amount+fees.withdraw_agent}}</text>
-    </view>
-    <view class="fee-category">
-    <text class="fee-label">Amount + Withdrawal & Sending Charge:</text>
-    <text class="fee-value">Ksh {{amount+fees.withdraw_agent+fees.send_registered}}</text>
-    </view>
-    <view class="fee-category">
-    <text class="fee-label">Withdraw from ATM:</text>
-    <text class="fee-value">Ksh {{fees.withdraw_atm}}</text>
-    </view>
-  </view>
+
+  
 
 </view>

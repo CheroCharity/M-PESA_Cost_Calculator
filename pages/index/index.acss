@@ -75,7 +75,7 @@
 .primary-button {
   background-color: #43b02a;
   color: white;
-  /* padding: 10px; */
+  border-color: 1px solid #43b02a !important;
   border-radius: 5px;
   text-align: center;
 }
@@ -86,4 +86,6 @@
   /* padding: 10px; */
   border-radius: 5px;
   text-align: center;
+  border: 1px solid #43b02a !important;
+  border-color: #43b02a !important;
 }

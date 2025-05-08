@@ -23,6 +23,6 @@
 
   <view class="buttons">
     <ant-button class="primary-button" onTap="openCalculator">Open Calculator</ant-button>
-    <ant-button class="secondary-button" onTap="learnMore">Learn More</ant-button>
+    <ant-button class="secondary-button"  custom-style="border: 1px solid #43b02a" onTap="learnMore">Learn More</ant-button>
   </view>
 </view>
