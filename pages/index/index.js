@@ -9,14 +9,12 @@ Page({
   },
 
   checkIfMobile() {
-    // Logic to determine if the device is mobile
     this.setData({
       isMobile: true,
     });
   },
 
   openCalculator() {
-    // Navigate to the calculator page
     my.navigateTo({
       url: '/pages/send/send',
     });

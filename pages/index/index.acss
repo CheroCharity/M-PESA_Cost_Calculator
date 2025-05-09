@@ -83,7 +83,6 @@
 .secondary-button {
   border: 1px solid #43b02a;
   color: #43b02a;
-  /* padding: 10px; */
   border-radius: 5px;
   text-align: center;
   border: 1px solid #43b02a !important;

@@ -68,12 +68,13 @@
           </radio-group>
         </view>
          
-        <!-- <view> -->
-          <view a:if="{{selected === 'paybill'}}">
+        <view a:if="{{selected === 'paybill'}}">
             <view class="form-group">
               <text class="label">Enter Amount</text>
               <input type="digit" value="{{amount}}" maxlength="6" onInput="onAmountInput" class="input" placeholder="e.g. 5000" />
               <text class="error-text" a:if="{{showError}}">Maximum allowed is 250000</text>
+              <text class="merchant-label">Enter Pay Bill Number</text>
+              <input type="digit" value="{{payBillNumber}}" maxlength="7" onInput="onPayBillInput" class="input" placeholder="e.g. 1234" />
               <ant-button class="primary-button" onTap="checkPayBillCost">Check Transaction Cost</ant-button>
             </view>
             <view a:if="{{paybillFees.paybill_charge}}">
@@ -99,7 +100,7 @@
                   </view>
                   <view class="row total">
                     <text class="label">Paybill Number:</text>
-                    <text class="total-value">12343</text>
+                    <text class="total-value">{{payBillNumber}}</text>
                   </view>
                 </view>   
               </view>
@@ -111,6 +112,8 @@
               <text class="label">Enter Amount</text>
               <input type="digit" value="{{amount}}" maxlength="6" onInput="onAmountInput" class="input" placeholder="e.g. 5000" />
               <text class="error-text" a:if="{{showError}}">Maximum allowed is 250000</text>
+              <text class="merchant-label">Enter Till Number</text>
+              <input type="digit" value="{{tillNumber}}" maxlength="7" onInput="onTillInput" class="input" placeholder="e.g. 1234" />
               <ant-button class="primary-button" onTap="checkTillCost">Check Transaction Cost</ant-button>
             </view>
             <view a:if="{{tillFees.till_charge}}">
@@ -125,18 +128,18 @@
                     <text class="label">Transaction Fee:</text>
                     <text class="value">KSh {{tillFees.till_charge}}</text>
                   </view>
-                  <view class="separator"></view>
                   <view class="row total">
                     <text class="label">Total Amount:</text>
                     <text class="total-value">KSh {{amount+tillFees.till_charge}}</text>
                   </view>
+                  <view class="separator"></view>
                   <view class="row total">
                     <text class="label">Till Name:</text>
                     <text class="total-value">Test Till</text>
                   </view>
                   <view class="row total">
                     <text class="label">Till Number:</text>
-                    <text class="total-value">12343</text>
+                    <text class="total-value">{{tillNumber}}</text>
                   </view>
                 </view>            
                 </view>

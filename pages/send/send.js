@@ -1,6 +1,8 @@
 Page({
   data: {
     amount: '',
+    tillNumber: '',
+    payBillNumber: '',
     showError: false,
     current: 0,
     selected:'paybill',
@@ -61,11 +63,9 @@ Page({
       success: function (res) {
         const feeData = res.data;
   
-        // CASE 1: Direct array
         if (Array.isArray(feeData)) {
           this.setData({ tillFeeTable: feeData });
         }
-        // CASE 2: Wrapped inside 'data'
         else if (Array.isArray(feeData.data)) {
           this.setData({ tillFeeTable: feeData.data });
         }
@@ -89,11 +89,9 @@ Page({
       success: function (res) {
         const feeData = res.data;
   
-        // CASE 1: Direct array
         if (Array.isArray(feeData)) {
           this.setData({ paybillFeeTable: feeData });
         }
-        // CASE 2: Wrapped inside 'data'
         else if (Array.isArray(feeData.data)) {
           this.setData({ paybillFeeTable: feeData.data });
         }
@@ -107,6 +105,18 @@ Page({
         my.alert({ title: 'Error', content: 'Failed to load fee data' });
       }.bind(this)
     });
+  }, 
+
+  onTillInput(e) {
+    this.setData({
+      tillNumber: e.detail.value,
+    })
+  }, 
+
+  onPayBillInput(e) {
+    this.setData({
+      payBillNumber: e.detail.value,
+    })
   }, 
 
   onAmountInput(e) {
@@ -181,6 +191,8 @@ onRadioChange(e) {
     paybillFees: {
       paybill_charge: 0,
     },
+    payBillNumber: '',
+    tillNumber: ''
   });
 },
 
