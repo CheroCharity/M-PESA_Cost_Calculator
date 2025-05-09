@@ -73,7 +73,8 @@
               <text class="label">Enter Amount</text>
               <input type="digit" value="{{amount}}" maxlength="6" onInput="onAmountInput" class="input" placeholder="e.g. 5000" />
               <text class="error-text" a:if="{{showError}}">Maximum allowed is 250000</text>
-              <text class="merchant-label">Enter Pay Bill Number</text>
+              <view class="spacer"></view>
+              <text class="label">Enter Pay Bill Number</text>
               <input type="digit" value="{{payBillNumber}}" maxlength="7" onInput="onPayBillInput" class="input" placeholder="e.g. 1234" />
               <ant-button class="primary-button" onTap="checkPayBillCost">Check Transaction Cost</ant-button>
             </view>
@@ -95,7 +96,7 @@
                   </view>
                   <view class="separator"></view>
                   <view class="row total">
-                    <text class="label">Paybill Name::</text>
+                    <text class="label">Paybill Name:</text>
                     <text class="total-value">Test Paybill</text>
                   </view>
                   <view class="row total">
@@ -112,7 +113,8 @@
               <text class="label">Enter Amount</text>
               <input type="digit" value="{{amount}}" maxlength="6" onInput="onAmountInput" class="input" placeholder="e.g. 5000" />
               <text class="error-text" a:if="{{showError}}">Maximum allowed is 250000</text>
-              <text class="merchant-label">Enter Till Number</text>
+              <view class="spacer"></view>
+              <text class="label">Enter Till Number</text>
               <input type="digit" value="{{tillNumber}}" maxlength="7" onInput="onTillInput" class="input" placeholder="e.g. 1234" />
               <ant-button class="primary-button" onTap="checkTillCost">Check Transaction Cost</ant-button>
             </view>

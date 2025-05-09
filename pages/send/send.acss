@@ -65,13 +65,14 @@
 .fee-label {
   display: block;
   margin-top: 16rpx;
-  font-size: 30rpx;
+  font-size: 28rpx;
   color: #555;
 }
 
 .fee-value {
-  font-size: 32rpx;
+  font-size: 30rpx;
   color: #43b02a;
+  margin-top: 16rpx;
   font-weight: bold;
 }
 
@@ -198,6 +199,10 @@
 
 .col {
   flex: 1;
+}
+
+.spacer {
+  height: 40rpx;
 }
 
 
